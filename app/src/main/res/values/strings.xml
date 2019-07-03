@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Inventura</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Inventura</string>
+    <string name="nav_header_subtitle">"(c) 2019, Michal Trojek</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_export">Exportovat</string>
+    <string name="menu_delete">Vymazat vše</string>
+
+
+    <string name="locationInput">Vlož lokaci</string>
+    <string name="eanInput">Vlož EAN</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="deleteAll">Opravdu chcete smazat všechny položky?</string>
+
+
+</resources>
