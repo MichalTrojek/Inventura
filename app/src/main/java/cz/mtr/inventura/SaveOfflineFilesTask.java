@@ -50,8 +50,9 @@ public class SaveOfflineFilesTask extends AsyncTask<String, Integer, Void> {
     //středníkem oddělené hodnoty EAN, LOKACE, POČET, DATUM
     private void createOfflineFiles(ArrayList<Item> items) throws IOException {
         try {
+            String location = items.get(0).getLocation();
             if (isExternalStorageWritable()) {
-                String filename = "INV_" + returnDate() + ".csv";
+                String filename = "LOK_" + location + "_" + returnDate() + ".csv";
                 File file = new File(Environment.getExternalStorageDirectory(), filename);
                 FileOutputStream fileOut = new FileOutputStream(file);
                 FileWriter csvWriter = new FileWriter(fileOut.getFD());
@@ -82,8 +83,6 @@ public class SaveOfflineFilesTask extends AsyncTask<String, Integer, Void> {
     }
 
 
-
-
     public boolean isExternalStorageWritable() {
         String state = Environment.getExternalStorageState();
         if (Environment.MEDIA_MOUNTED.equals(state)) {
@@ -93,7 +92,7 @@ public class SaveOfflineFilesTask extends AsyncTask<String, Integer, Void> {
     }
 
     private String returnDate() {
-        DateFormat sdf = new SimpleDateFormat("dd-MM-YYYY_HHMMSS");
+        DateFormat sdf = new SimpleDateFormat("HHMMSS");
         Date date = new Date();
         System.out.println(sdf.format(date));
         return sdf.format(date).toString();
