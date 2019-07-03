@@ -8,43 +8,19 @@
     android:orientation="vertical">
 
     <EditText
-        android:id="@+id/changeEan"
+        android:id="@+id/changeLocation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:ems="10"
-        android:hint="Změn EAN"
+        android:hint="Změnit lokace"
         android:inputType="textPersonName"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/changeLocation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:hint="Změn lokaci"
-        android:inputType="textPersonName"
-        android:textAlignment="center"
-        app:layout_constraintStart_toStartOf="@+id/changeEan"
-        app:layout_constraintTop_toBottomOf="@+id/changeEan" />
-
-    <EditText
-        android:id="@+id/changeAmount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:hint="Změn počet"
-        android:inputType="number"
-        android:textAlignment="center"
-        app:layout_constraintStart_toStartOf="@+id/changeLocation"
-        app:layout_constraintTop_toBottomOf="@+id/changeLocation" />
 
     <Button
         android:id="@+id/changeButton"
@@ -55,7 +31,7 @@
         android:text="Uložit změny"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/changeAmount" />
+        app:layout_constraintTop_toBottomOf="@+id/changeLocation" />
 
     <Button
         android:id="@+id/cancelButton"

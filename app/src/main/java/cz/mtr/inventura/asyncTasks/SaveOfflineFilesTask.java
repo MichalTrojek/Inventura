@@ -1,4 +1,4 @@
-package cz.mtr.inventura;
+package cz.mtr.inventura.asyncTasks;
 
 import android.content.Context;
 import android.media.MediaScannerConnection;

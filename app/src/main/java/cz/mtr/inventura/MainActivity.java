@@ -32,6 +32,10 @@ import com.google.android.material.navigation.NavigationView;
 import java.util.ArrayList;
 
 import cz.mtr.inventura.Preferences.Prefs;
+import cz.mtr.inventura.asyncTasks.SaveOfflineFilesTask;
+import cz.mtr.inventura.dialogs.FragmentChangeDialog;
+import cz.mtr.inventura.dialogs.FragmentChangeLocationDialog;
+import cz.mtr.inventura.dialogs.FragmentDeleteAllDialog;
 import cz.mtr.inventura.listView.Item;
 import cz.mtr.inventura.listView.ItemAdapter;
 import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator;
@@ -198,6 +202,8 @@ public class MainActivity extends AppCompatActivity
             handleDeleteButton();
         } else if (id == R.id.nav_export) {
             handleExportButton();
+        } else if (id == R.id.nav_loc) {
+            handleLocationButton();
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -215,7 +221,23 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void handleExportButton() {
+        if (items.isEmpty()) {
+            Toast.makeText(this, "Není co exportovat.", Toast.LENGTH_SHORT).show();
+            return;
+        }
         new SaveOfflineFilesTask(this, items).execute();
+    }
+
+    private void handleLocationButton() {
+        FragmentChangeLocationDialog dialog = new FragmentChangeLocationDialog();
+        dialog.show(getSupportFragmentManager(), "FragmentChangeLocationDialog");
+    }
+
+    public void changeLocation(String newLocation) {
+        for (Item m : items) {
+            m.setLocation(newLocation);
+        }
+        mAdapter.notifyDataSetChanged();
     }
 
 

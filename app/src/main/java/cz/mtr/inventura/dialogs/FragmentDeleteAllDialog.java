@@ -1,4 +1,4 @@
-package cz.mtr.inventura;
+package cz.mtr.inventura.dialogs;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,6 +8,9 @@ import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
+
+import cz.mtr.inventura.MainActivity;
+import cz.mtr.inventura.R;
 
 
 public class FragmentDeleteAllDialog extends DialogFragment {

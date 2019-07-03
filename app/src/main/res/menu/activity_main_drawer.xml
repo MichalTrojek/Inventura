@@ -5,8 +5,13 @@
     <group>
         <item
             android:id="@+id/nav_export"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/ic_import_export_black_24dp"
             android:title="@string/menu_export" />
+
+        <item
+            android:id="@+id/nav_loc"
+            android:icon="@drawable/ic_edit_black_24dp"
+            android:title="@string/menu_location" />
 
         <item
             android:id="@+id/nav_delete"

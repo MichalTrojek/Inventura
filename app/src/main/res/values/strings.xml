@@ -9,6 +9,7 @@
 
     <string name="menu_export">Exportovat</string>
     <string name="menu_delete">Vymazat vše</string>
+    <string name="menu_location">Hromadně změnit lokace</string>
 
 
     <string name="locationInput">Vlož lokaci</string>

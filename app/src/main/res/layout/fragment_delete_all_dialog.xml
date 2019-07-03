@@ -5,7 +5,7 @@
     android:id="@+id/constainLayout"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    tools:context=".FragmentDeleteAllDialog">
+    tools:context=".dialogs.FragmentDeleteAllDialog">
 
     <Button
         android:id="@+id/yesButton"
