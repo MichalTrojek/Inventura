@@ -67,8 +67,8 @@ public class FragmentChangeDialog extends DialogFragment {
             public void onClick(View view) {
                 int position = ((MainActivity) getActivity()).getItemPosition();
                 ((MainActivity) getActivity()).getItems().get(position).setAmount(Integer.parseInt(changeAmountEditText.getText().toString()));
-                ((MainActivity) getActivity()).getItems().get(position).setEan(changeEanEditText.getText().toString());
-                ((MainActivity) getActivity()).getItems().get(position).setLocation(changeLocationEditText.getText().toString());
+                ((MainActivity) getActivity()).getItems().get(position).setEan(changeEanEditText.getText().toString().trim());
+                ((MainActivity) getActivity()).getItems().get(position).setLocation(changeLocationEditText.getText().toString().trim().toUpperCase());
                 ((MainActivity) getActivity()).getAdapter().notifyItemChanged(position);
                 hideKeyboard(changeEanEditText);
                 hideKeyboard(changeLocationEditText);

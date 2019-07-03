@@ -55,7 +55,7 @@ public class FragmentChangeLocationDialog extends DialogFragment {
         changeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((MainActivity) getActivity()).changeLocation(changeLocationEditText.getText().toString());
+                ((MainActivity) getActivity()).changeLocation(changeLocationEditText.getText().toString().trim().toUpperCase());
                 hideKeyboard(changeLocationEditText);
                 dismiss();
             }

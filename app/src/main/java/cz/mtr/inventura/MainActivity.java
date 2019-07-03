@@ -67,6 +67,9 @@ public class MainActivity extends AppCompatActivity
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
         prefs = new Prefs(this);
 
+
+
+
         new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
             @Override
             public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
@@ -274,8 +277,7 @@ public class MainActivity extends AppCompatActivity
 
 
     private void addEan() {
-
-        String ean = inputEanEditText.getText().toString();
+        String ean = inputEanEditText.getText().toString().trim();
         if (!ean.isEmpty()) {
             handleAddingEan(ean);
         }
@@ -296,7 +298,7 @@ public class MainActivity extends AppCompatActivity
     private String getLocation() {
         String location = "";
         if (location == "") {
-            location = inputLocationEditText.getText().toString();
+            location = inputLocationEditText.getText().toString().trim().toUpperCase();
         }
         return location;
     }
