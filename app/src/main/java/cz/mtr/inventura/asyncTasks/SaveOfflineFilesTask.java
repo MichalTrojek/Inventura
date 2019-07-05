@@ -15,6 +15,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import cz.mtr.inventura.MainActivity;
+import cz.mtr.inventura.dialogs.FragmentLoadingDialog;
 import cz.mtr.inventura.listView.Item;
 
 public class SaveOfflineFilesTask extends AsyncTask<String, Integer, Void> {
@@ -22,11 +24,22 @@ public class SaveOfflineFilesTask extends AsyncTask<String, Integer, Void> {
 
     private Context mContext;
     private ArrayList<Item> mItems = new ArrayList<>();
+    private FragmentLoadingDialog progressDialog;
+    private MainActivity mActivity;
 
 
     public SaveOfflineFilesTask(Context c, ArrayList<Item> items) {
         this.mContext = c;
         this.mItems = items;
+        mActivity = (MainActivity) mContext;
+
+    }
+
+    @Override
+    protected void onPreExecute() {
+        progressDialog = new FragmentLoadingDialog();
+        progressDialog.setCancelable(false);
+        progressDialog.show(mActivity.getSupportFragmentManager(), "FragmentChangeDialog");
 
     }
 
@@ -34,6 +47,7 @@ public class SaveOfflineFilesTask extends AsyncTask<String, Integer, Void> {
     protected Void doInBackground(String... voids) {
         try {
             createOfflineFiles(mItems);
+            Thread.sleep(3000);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -43,7 +57,8 @@ public class SaveOfflineFilesTask extends AsyncTask<String, Integer, Void> {
 
     @Override
     protected void onPostExecute(Void v) {
-        Toast.makeText(mContext, "Data uložena", Toast.LENGTH_LONG).show();
+        Toast.makeText(mContext, "Soubor vytvořen.", Toast.LENGTH_LONG).show();
+        progressDialog.dismiss();
     }
 
 
