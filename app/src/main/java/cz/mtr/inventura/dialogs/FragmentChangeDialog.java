@@ -1,5 +1,6 @@
 package cz.mtr.inventura.dialogs;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.text.Editable;
@@ -26,6 +27,7 @@ public class FragmentChangeDialog extends DialogFragment {
     private Button changeButton, cancelButton;
     private EditText changeEanEditText, changeLocationEditText, changeAmountEditText;
     private Item item;
+
 
     @NonNull
     @Override
@@ -54,18 +56,14 @@ public class FragmentChangeDialog extends DialogFragment {
         cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                hideKeyboard(changeEanEditText);
-                hideKeyboard(changeLocationEditText);
-                hideKeyboard(changeAmountEditText);
-                ((MainActivity) getActivity()).getAdapter().notifyDataSetChanged();
-                dismiss();
+                goBackAndDoNothing();
             }
         });
 
         changeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int position = ((MainActivity) getActivity()).getItemPosition();
+                 int position = ((MainActivity) getActivity()).getItemPosition();
                 ((MainActivity) getActivity()).getItems().get(position).setAmount(Integer.parseInt(changeAmountEditText.getText().toString()));
                 ((MainActivity) getActivity()).getItems().get(position).setEan(changeEanEditText.getText().toString().trim());
                 ((MainActivity) getActivity()).getItems().get(position).setLocation(changeLocationEditText.getText().toString().trim().toUpperCase());
@@ -80,6 +78,26 @@ public class FragmentChangeDialog extends DialogFragment {
 
         return view;
     }
+
+    @Override
+    public Dialog onCreateDialog(Bundle savedInstanceState) {
+        return new Dialog(getActivity(), getTheme()) {
+            @Override
+            public void onBackPressed() {
+                goBackAndDoNothing();
+            }
+        };
+    }
+
+    private void goBackAndDoNothing() {
+        int position = ((MainActivity) getActivity()).getItemPosition();
+        hideKeyboard(changeEanEditText);
+        hideKeyboard(changeLocationEditText);
+        hideKeyboard(changeAmountEditText);
+        ((MainActivity) getActivity()).getAdapter().notifyItemChanged(position);
+        dismiss();
+    }
+
 
     private TextWatcher changeTextWatcher = new TextWatcher() {
         @Override
